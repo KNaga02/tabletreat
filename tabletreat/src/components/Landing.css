@@ -1,0 +1,102 @@
+.landing {
+  height: 100vh;
+  width: 100%;
+  background: 
+    linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(51, 50, 49, 0.5)),
+    url('https://www.apnachef.com/wp-content/uploads/2023/12/chicken-biryani-50-people-wide.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: left;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  perspective: 200px;
+  overflow: hidden;
+
+  animation: bgZoom 20s ease-in-out infinite;
+}
+
+@keyframes bgZoom {
+  0% {
+    background-size: 100% auto;
+    background-position: center;
+  }
+  50% {
+    background-size: 110% auto;
+    background-position: center;
+  }
+  100% {
+    background-size: 100% auto;
+    background-position: center;
+  }
+}
+
+
+.overlay {
+  text-align: left;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #e3642d;
+
+  text-shadow: 
+    2px 2px 0 #000, 
+    4px 4px 0 #333, 
+    6px 6px 10px rgba(0, 0, 0, 0.6);
+
+  animation: logo3D 3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+.tagline {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #f2ecc8;
+  /* margin-top: 10px; */
+    /* font-size: 1rem; */
+  padding-left: 9%;
+  /* padding-bottom:100px; */
+  opacity: 0;
+  animation: fadeIn 2s ease-in-out forwards;
+  animation-delay: 3s; 
+}
+
+@keyframes logo3D {
+  0% {
+    opacity: 0;
+    transform: scale(3) rotateX(70deg) rotateY(50deg) translateZ(200px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.5) rotateX(20deg) rotateY(-20deg) translateZ(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateX(0deg) rotateY(0deg) translateZ(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title:hover {
+  color: #ffd700;
+  text-shadow: 
+    2px 2px 0 #000, 
+    4px 4px 0 #444, 
+    8px 8px 15px rgba(0,0,0,0.7);
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}

@@ -1,0 +1,80 @@
+.tt-header {
+  max-width: 1200px;
+  margin: auto;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background: var(--bg, #fbf3ea);
+  z-index: 100;
+  box-shadow: 0 2px 8px var(--shadow, rgba(0,0,0,0.1));
+  font-family: "Poppins", sans-serif;
+}
+
+.tt-logo-name {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tt-logo svg {
+  width: 40px;
+  height: 40px;
+}
+
+.tt-brand {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--text, #2d1d13);
+  margin-top: 5px;
+}
+
+.tt-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.tt-nav-link {
+  text-decoration: none;
+  color: var(--text, #2d1d13);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.tt-nav-link:hover {
+  color: var(--accent, #d86919);
+}
+
+.tt-cta {
+  background: var(--accent, #d86919);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tt-cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  .tt-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 20px;
+  }
+
+  .tt-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+}

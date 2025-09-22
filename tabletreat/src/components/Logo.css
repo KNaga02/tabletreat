@@ -1,0 +1,47 @@
+.logo-container {
+  /* display: flex; */
+  justify-content: center;
+  align-items: left;
+  perspective: 1000px; 
+}
+
+.logo-text {
+  font-size: 6rem;
+    width: 100%;
+  font-weight: 900;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: default;
+  padding-left: 4%;
+
+  background: linear-gradient(45deg, #e25c02, #1a1818);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 
+    2px 1px 0px #e25c02;
+    /* 4px 4px 0px #060606, 
+    6px 6px 0px rgba(18, 16, 16, 0.7); */
+
+  animation: logoIntro 2s ease-in-out forwards;
+}
+
+.logo-text span {
+  color: #4aca0a;
+  -webkit-text-fill-color: #f2ecc8;
+  text-shadow:
+    2px 2px 0px #f2ecc8,
+    4px 4px 5px f2ecc8(0,0,0,0.6);
+}
+
+@keyframes logoIntro {
+  0% {
+    opacity: 0;
+    transform: scale(3) rotateX(60deg) rotateY(60deg) translateZ(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateX(0deg) rotateY(0deg) translateZ(0);
+  }
+}
