@@ -66,7 +66,7 @@ function AppWrapper() {
           element={<ContactScreen />}
         />
         <Route
-          path="/track-order"
+          path="/tracking"
           element={<OrderTracking />}
         />
       </Routes>
