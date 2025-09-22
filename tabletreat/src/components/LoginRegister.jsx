@@ -9,7 +9,7 @@ export default function LoginRegister() {
   const [form, setForm] = useState({ email: "", password: "", name: "", confirmPassword: "" });
   const [otp, setOtp] = useState("");
   const [generatedOtp, setGeneratedOtp] = useState("");
- 
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,11 +25,17 @@ export default function LoginRegister() {
 
   const handleRegister = (e) => {
     e.preventDefault();
+
+    if (form.password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      return;
+    }
+
     if (!otpSent) {
       const newOtp = Math.floor(1000 + Math.random() * 9000).toString();
       setGeneratedOtp(newOtp);
       setOtpSent(true);
-      alert(`Mock OTP Sent: ${newOtp}`); 
+      alert(`Mock OTP Sent: ${newOtp}`);
       return;
     }
 
@@ -43,7 +49,10 @@ export default function LoginRegister() {
       return;
     }
 
-    localStorage.setItem("user", JSON.stringify({ email: form.email, password: form.password, name: form.name }));
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ email: form.email, password: form.password, name: form.name })
+    );
     alert("Registration successful!");
     setIsLogin(true);
     setOtpSent(false);
@@ -52,6 +61,12 @@ export default function LoginRegister() {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    if (form.password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      return;
+    }
+
     const savedUser = JSON.parse(localStorage.getItem("user"));
 
     if (savedUser && savedUser.email === form.email && savedUser.password === form.password) {
@@ -64,6 +79,12 @@ export default function LoginRegister() {
 
   const handleForgotPassword = (e) => {
     e.preventDefault();
+
+    if (form.password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      return;
+    }
+
     const savedUser = JSON.parse(localStorage.getItem("user"));
 
     if (savedUser && savedUser.email === form.email) {
@@ -84,12 +105,36 @@ export default function LoginRegister() {
           <>
             <h2>Forgot Password</h2>
             <form onSubmit={handleForgotPassword}>
-              <input type="email" name="email" placeholder="Enter Email" value={form.email} onChange={handleChange} required />
-              <input type="password" name="password" placeholder="New Password" value={form.password} onChange={handleChange} required />
-              <button type="submit" className="auth-btn">Reset Password</button>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter Email"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="New Password (min 6 chars)"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+              <button type="submit" className="auth-btn">
+                Reset Password
+              </button>
             </form>
             <p className="toggle-text">
-              Back to <span onClick={() => { setIsForgot(false); setIsLogin(true); }}>Login</span>
+              Back to{" "}
+              <span
+                onClick={() => {
+                  setIsForgot(false);
+                  setIsLogin(true);
+                }}
+              >
+                Login
+              </span>
             </p>
           </>
         ) : (
@@ -97,17 +142,53 @@ export default function LoginRegister() {
             <h2>{isLogin ? "Login" : "Register"}</h2>
             <form onSubmit={isLogin ? handleLogin : handleRegister}>
               {!isLogin && (
-                <input type="text" name="name" placeholder="Full Name" value={form.name} onChange={handleChange} required />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                />
               )}
-              <input type="email" name="email" placeholder="Email" value={form.email} onChange={handleChange} required />
-              <input type="password" name="password" placeholder="Password" value={form.password} onChange={handleChange} required />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password (min 6 chars)"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
               {!isLogin && (
-                <input type="password" name="confirmPassword" placeholder="Confirm Password" value={form.confirmPassword} onChange={handleChange} required />
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  value={form.confirmPassword}
+                  onChange={handleChange}
+                  required
+                />
               )}
               {!isLogin && otpSent && (
-                <input type="text" placeholder="Enter OTP" value={otp} onChange={(e) => setOtp(e.target.value)} required />
+                <input
+                  type="text"
+                  placeholder="Enter OTP"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  required
+                />
               )}
-              <button type="submit" className="auth-btn">{isLogin ? "Login" : otpSent ? "Verify OTP" : "Register"}</button>
+              <button type="submit" className="auth-btn">
+                {isLogin ? "Login" : otpSent ? "Verify OTP" : "Register"}
+              </button>
             </form>
             {isLogin && (
               <p className="forgot-text">
@@ -116,7 +197,14 @@ export default function LoginRegister() {
             )}
             <p className="toggle-text">
               {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-              <span onClick={() => { setIsLogin(!isLogin); setOtpSent(false); }}> {isLogin ? "Register" : "Login"} </span>
+              <span
+                onClick={() => {
+                  setIsLogin(!isLogin);
+                  setOtpSent(false);
+                }}
+              >
+                {isLogin ? "Register" : "Login"}
+              </span>
             </p>
           </>
         )}
@@ -124,6 +212,11 @@ export default function LoginRegister() {
     </div>
   );
 }
+
+
+
+
+
 // import React, { useState } from "react";
 // import axios from "axios";
 // import { useNavigate } from "react-router-dom";

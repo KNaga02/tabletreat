@@ -48,7 +48,7 @@ export default function Header({ isLoggedIn }) {
             />
           </svg>
         </div>
-        <div className="tt-brand">
+        <div className="tt-brand" onClick={() => navigate("/home")} style={{ cursor: "pointer" }}>
           <span>TableTreat</span>
         </div>
       </div>
