@@ -2,10 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
-export default function Header({ isLoggedIn, setIsLoggedIn }) {
-
-  console.log("isLoggedIn in Header:", isLoggedIn);
-  
+export default function Header({ isLoggedIn }) {
   const navigate = useNavigate();
 
   const handleTableOrderClick = () => {
@@ -17,11 +14,11 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
     navigate("/table-order");
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    setIsLoggedIn(false);
-    navigate("/login");
-  };
+  // const handleLogout = () => {
+  //   localStorage.removeItem("isLoggedIn");
+  //   setIsLoggedIn(false);
+  //   navigate("/login");
+  // };
 
   return (
     <header className="tt-header">
@@ -71,9 +68,28 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
             Login
           </button>
         ) : (
-          <button className="tt-cta" onClick={handleLogout}>
-            Logout
-          </button>
+          <>
+            <button className="profile-btn" onClick={() => navigate("/profile")}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <circle cx="12" cy="8" r="4" />
+                <path d="M20 21c0-4-4-7-8-7s-8 3-8 7" />
+              </svg>
+            </button>
+
+            {/* <button className="tt-cta" onClick={handleLogout}>
+              Logout
+            </button> */}
+          </>
         )}
       </nav>
     </header>

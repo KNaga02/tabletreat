@@ -2,12 +2,12 @@ import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./OrderConfirmation.css";
 
+
 export default function OrderConfirmation() {
   const navigate = useNavigate();
   const location = useLocation();
   const { order, orderType, details } = location.state || {};
 
-  // If no order or reservation info is found
   if (!order && !details) {
     return (
       <div className="confirmation-screen">

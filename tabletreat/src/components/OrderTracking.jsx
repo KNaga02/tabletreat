@@ -32,7 +32,7 @@ export default function OrderTracking() {
 
   return (
     <div className="order-tracking-screen">
-      <button className="back-btn" onClick={() => navigate("/home")}></button>
+      {/* <button className="back-btn" onClick={() => navigate("/home")}></button> */}
       <header className="tracking-header">
         <h1>Order Tracking</h1>
         <p>Order ID: {order.id}</p>
